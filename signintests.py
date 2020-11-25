@@ -94,7 +94,7 @@ class SearchText(unittest.TestCase):
 
     # (A1,B1) Wrong Password
     # Ram Karri
-    # Should result in None as that element will not be found as page will redirect"
+    # Should result in not none as the new page has this id but the old does not"
     def test_zbase_case(self):
         self.driver.refresh()
         email = self.driver.find_element_by_id('email')
@@ -103,9 +103,9 @@ class SearchText(unittest.TestCase):
         password.send_keys("password")
 
         self.driver.find_element_by_id('sign-in-button').click()
-        text = self.driver.find_element_by_class_name('jss8')
+        text = self.driver.find_element_by_id('recharts_measurement_span')
 
-        self.assertIsNone(text)
+        self.assertIsNotNone(text)
 
     @classmethod
     def tearDownClass(inst):
